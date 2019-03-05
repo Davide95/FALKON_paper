@@ -12,3 +12,7 @@ To merge all the files in a trivial way, you can:
 
 1. import them in a dbms (e.g. http://stat-computing.org/dataexpo/2009/sqlite.html);
 2. export them as a csv file (e.g. http://www.sqlitetutorial.net/sqlite-tutorial/sqlite-export-csv/).
+
+# Data cleaning
+
+Data cleaning is performed through the (data-cleaning.m)[data-cleaning.m] script.

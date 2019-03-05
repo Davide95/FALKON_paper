@@ -1,0 +1,1 @@
+t = readtable('dataset/data.csv', 'TreatAsEmpty', 'NA', 'EmptyValue', 0);

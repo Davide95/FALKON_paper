@@ -17,4 +17,4 @@ To merge all the files in a trivial way, you can:
 
 Data cleaning is performed through the [data_cleaning.m](data_cleaning.m) script.
 
-The result is saved onto `X.mat` and `y.mat` after its execution.
+The result is saved onto `dataset/X.mat` and `dataset/y.mat` after its execution.

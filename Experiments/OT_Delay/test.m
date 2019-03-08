@@ -20,6 +20,8 @@ Xts = X(ts_size+1:2*ts_size, :);
 Yts = y(ts_size+1:2*ts_size);
 Xtr = X(2*ts_size+1:end, :);
 Ytr = y(2*ts_size+1:end);
+
+%% Clean unused variables ----------
 clear X y; % Remove big matrixes from workspace
 
 %% Centering ----------

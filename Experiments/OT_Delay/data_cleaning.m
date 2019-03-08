@@ -18,12 +18,16 @@ numericalCols = table2array(table(:, {'Distance', 'AirTime', ...
     'DayOfWeek', 'DayofMonth', 'Month', 'Year'}));
 timeCols = intHmmToMinutes(table2array(table(:, ...
     {'DepTime', 'ArrTime'})));
+
+%% Clean unused variables ----------
 clear table;
 
 %% Training data extraction ----------
 X = double(horzcat(numericalCols, timeCols));
-clear numericalCols timeCols;
 save('dataset/X.mat','X');
+
+%% Clean unused variables ----------
+clear numericalCols timeCols;
 
 %% Custom functions ----------
 function colsOut = intHmmToMinutes(colsIn)

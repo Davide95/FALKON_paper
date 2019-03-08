@@ -1,3 +1,4 @@
+%% Load Dataset ----------
 format = '%d%d%d%d%d%d%d%d%C%d%s%d%d%d%d%d%C%C%d%d%d%d%C%d%d%d%d%d%d';
 table = readtable('dataset/2008.csv', ...
     'TreatAsEmpty', 'NA', ...
@@ -5,22 +6,27 @@ table = readtable('dataset/2008.csv', ...
     'Format', format);
 clear format;
 
-% Filter data from January to April
+%% Filter data from January to April ----------
 table = table(table.Month <= 4, :);
 
+%% Supervisory signal extraction ----------
+y = table2array(table(:, 'ArrDelay'));
+save('dataset/y.mat','y');
+
+%% Manual features selection ----------
 numericalCols = table2array(table(:, {'Distance', 'AirTime', ...
     'DayOfWeek', 'DayofMonth', 'Month', 'Year'}));
 timeCols = intHmmToMinutes(table2array(table(:, ...
     {'DepTime', 'ArrTime'})));
-y = table2array(table(:, 'ArrDelay'));
 clear table;
 
-save('dataset/y.mat','y');
-
+%% Training data extraction ----------
 X = horzcat(numericalCols, timeCols);
 clear numericalCols timeCols;
 save('dataset/X.mat','X');
 
+
+%% Custom functions ----------
 function colsOut = intHmmToMinutes(colsIn)
     hours = floor(colsIn / 100);
     minutes = colsIn - hours*100;

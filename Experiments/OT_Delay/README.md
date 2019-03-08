@@ -15,3 +15,7 @@ Data cleaning is performed through the [data_cleaning.m](data_cleaning.m) script
 We'll consider only flights between January and April in 2008.
 
 The result is saved onto `dataset/X.mat` and `dataset/y.mat` after its execution.
+
+# Run experiment
+
+Execute the script [test.m](test.m) to run the training.

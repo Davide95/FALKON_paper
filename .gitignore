@@ -1,3 +1,5 @@
 *.asv
 *.mat
 *.csv
+
+!/Experiments/OT_Delay/hyperparameter-optimization.csv

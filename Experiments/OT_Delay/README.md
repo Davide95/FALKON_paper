@@ -19,3 +19,7 @@ The result is saved onto `dataset/X.mat` and `dataset/y.mat` after its execution
 # Run experiment
 
 Execute the script [test.m](test.m) to run the training.
+
+# Hyperparameter optimization
+
+To see past attempts to do hyperparameter optimization and their result, check [hyperparameter-optimization.csv](hyperparameter-optimization.csv). 

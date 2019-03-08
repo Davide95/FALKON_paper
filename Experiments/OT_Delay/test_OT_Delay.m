@@ -64,9 +64,8 @@ alpha = falkon(Xtr, C, kernel, Ytr, lambda, iterations, ...
 toc;
 
 %% Testing
-
-% TODO: what 20 is?
-Ypred = KtsProd(Xts, C, alpha, 20, kernel);
+numBlocks = 5;
+Ypred = KtsProd(Xts, C, alpha, numBlocks, kernel);
 
 RMSE = sqrt(mean((Yts - Ypred).^2));
 disp(RMSE);

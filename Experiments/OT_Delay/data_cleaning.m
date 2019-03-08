@@ -1,9 +1,12 @@
-format = '%d%d%d%d%d%s%d%s%C%d%d%d%d%d%d%d%C%C%d%d%d%d%C%d%d%d%d%d%d';
-table = readtable('dataset/1987.csv', ...
+format = '%d%d%d%d%d%d%d%d%C%d%s%d%d%d%d%d%C%C%d%d%d%d%C%d%d%d%d%d%d';
+table = readtable('dataset/2008.csv', ...
     'TreatAsEmpty', 'NA', ...
     'EmptyValue', 0, ...
     'Format', format);
 clear format;
+
+% Filter data from January to April
+table = table(table.Month <= 4, :);
 
 numericalCols = table2array(table(:, {'Distance', 'AirTime', ...
     'DayOfWeek', 'DayofMonth', 'Month', 'Year'}));
@@ -13,7 +16,6 @@ y = table2array(table(:, 'ArrDelay'));
 clear table;
 
 save('dataset/y.mat','y');
-clear y;
 
 X = horzcat(numericalCols, timeCols);
 clear numericalCols timeCols;

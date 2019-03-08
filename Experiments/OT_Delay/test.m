@@ -62,3 +62,11 @@ alpha = falkon(Xtr, C, kernel, Ytr, lambda, iterations, ...
     cobj, callback, ...
     memToUse, useGPU);
 toc;
+
+%% Testing
+
+% TODO: what 20 is?
+Ypred = KtsProd(Xts, C, alpha, 20, kernel);
+
+RMSE = sqrt(mean((Yts - Ypred).^2));
+disp(RMSE);

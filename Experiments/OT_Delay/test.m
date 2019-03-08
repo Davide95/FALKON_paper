@@ -28,4 +28,6 @@ recenter = @(W, Z) (renorm(W - ones(size(W,1),1)*mean(Z),Z));
 
 XtrNotCentered = Xtr;
 Xtr = recenter(XtrNotCentered, XtrNotCentered);
+Xvs = recenter(Xvs, XtrNotCentered);
+Xts = recenter(Xts, XtrNotCentered);
 clear XtrNotCentered; % Useless, it's used only to recenter everything

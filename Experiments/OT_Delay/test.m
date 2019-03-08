@@ -1,3 +1,5 @@
+addpath(genpath('../../'));
+
 %% Load Dataset ----------
 if or(~exist('X' , 'var'), ~exist('y' , 'var'))
     load('dataset/X.mat');
@@ -21,6 +23,8 @@ Yts = y(ts_size+1:2*ts_size);
 Xtr = X(2*ts_size+1:end, :);
 Ytr = y(2*ts_size+1:end);
 
+[nTr, ~] = size(Xtr);
+
 %% Clean unused variables ----------
 clear X y; % Remove big matrixes from workspace
 
@@ -33,3 +37,28 @@ Xtr = recenter(XtrNotCentered, XtrNotCentered);
 Xvs = recenter(Xvs, XtrNotCentered);
 Xts = recenter(Xts, XtrNotCentered);
 clear XtrNotCentered; % Useless, it's used only to recenter everything
+
+%% Nystrom centers ----------
+numberOfCenters = 10000;
+centersI = randperm(nTr, numberOfCenters);
+C = Xtr(centersI, :);
+
+%% Hyperparameters ----------
+sigma = 4;
+kernel = gaussianKernel(sigma);
+lambda = 1e-6;
+iterations = 3;
+
+% Hyperparameter optimization ----------
+cobj = [];
+callback = @(alpha, cobj) [];
+
+%% Training ----------
+memToUse = [];
+useGPU = 1;
+
+tic;
+alpha = falkon(Xtr, C, kernel, Ytr, lambda, iterations, ...
+    cobj, callback, ...
+    memToUse, useGPU);
+toc;

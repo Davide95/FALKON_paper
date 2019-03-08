@@ -39,15 +39,15 @@ Xts = recenter(Xts, XtrNotCentered);
 clear XtrNotCentered; % Useless, it's used only to recenter everything
 
 %% Nystrom centers ----------
-numberOfCenters = 10000;
+numberOfCenters = 1480;
 centersI = randperm(nTr, numberOfCenters);
 C = Xtr(centersI, :);
 
 %% Hyperparameters ----------
 sigma = 4;
 kernel = gaussianKernel(sigma);
-lambda = 1e-6;
-iterations = 3;
+lambda = 0.00067585821;
+iterations = 6;
 
 % Hyperparameter optimization ----------
 cobj = [];

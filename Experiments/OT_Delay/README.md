@@ -18,7 +18,7 @@ The result is saved onto `dataset/X.mat` and `dataset/y.mat` after its execution
 
 # Run experiment
 
-Execute the script [test.m](test.m) to run the training.
+Execute the script [test_OT_Delay.m](ttest_OT_Delay.m) to run the training.
 
 # Hyperparameter optimization
 

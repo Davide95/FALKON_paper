@@ -10,7 +10,7 @@ clear format;
 table = table(table.Month <= 4, :);
 
 %% Supervisory signal extraction ----------
-y = table2array(table(:, 'ArrDelay'));
+y = double(table2array(table(:, 'ArrDelay')));
 save('dataset/y.mat','y');
 
 %% Manual features selection ----------
@@ -21,10 +21,9 @@ timeCols = intHmmToMinutes(table2array(table(:, ...
 clear table;
 
 %% Training data extraction ----------
-X = horzcat(numericalCols, timeCols);
+X = double(horzcat(numericalCols, timeCols));
 clear numericalCols timeCols;
 save('dataset/X.mat','X');
-
 
 %% Custom functions ----------
 function colsOut = intHmmToMinutes(colsIn)

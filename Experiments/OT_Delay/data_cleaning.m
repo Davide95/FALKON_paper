@@ -15,7 +15,7 @@ save('dataset/y.mat','y');
 
 %% Manual features selection ----------
 numericalCols = table2array(table(:, {'Distance', 'AirTime', ...
-    'DayOfWeek', 'DayofMonth', 'Month', 'Year'}));
+    'DayOfWeek', 'DayofMonth', 'Month'}));
 timeCols = intHmmToMinutes(table2array(table(:, ...
     {'DepTime', 'ArrTime'})));
 

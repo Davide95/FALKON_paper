@@ -51,11 +51,9 @@ callback = @(alpha, cobj) [];
 memToUse = [];
 useGPU = 1;
 
-tic;
 alpha = falkon(Xtr, C, kernel, Ytr, lambda, iterations, ...
     cobj, callback, ...
     memToUse, useGPU);
-toc;
 
 %% Testing
 numBlocks = 5;

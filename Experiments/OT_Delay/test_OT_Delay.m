@@ -55,7 +55,7 @@ numBlocks = 5;
 Ypred = KtsProd(Xts, C, alpha, numBlocks, kernel);
 
 RMSE = sqrt(mean((Yts - Ypred).^2));
-fprintf("RMSE test set: %f.", RMSE);
+fprintf("RMSE test set: %f.\n", RMSE);
 
 %% Custom functions ----------
 function new_cobj = hyperpars_tuning(alpha, cobj)

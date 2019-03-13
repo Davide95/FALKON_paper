@@ -43,16 +43,12 @@ kernel = gaussianKernel(sigma);
 lambda = 0.00067585821;
 iterations = 6;
 
-% Hyperparameter optimization ----------
-cobj = [];
-callback = @(alpha, cobj) [];
-
 %% Training ----------
 memToUse = [];
 useGPU = 1;
-
+counter = 1;
 alpha = falkon(Xtr, C, kernel, Ytr, lambda, iterations, ...
-    cobj, callback, ...
+    counter, @hyperpars_tuning, ...
     memToUse, useGPU);
 
 %% Testing
@@ -60,4 +56,15 @@ numBlocks = 5;
 Ypred = KtsProd(Xts, C, alpha, numBlocks, kernel);
 
 RMSE = sqrt(mean((Yts - Ypred).^2));
-disp(RMSE);
+fprintf("RMSE test set: %f.", RMSE);
+
+%% Custom functions ----------
+function new_counter = hyperpars_tuning(alpha, counter)
+    numBlocks = 5;
+    tic; Ypred = KtsProd(Xvs, C, alpha, numBlocks, kernel); toc
+    
+    RMSE = sqrt(mean((Yvs - Ypred).^2));
+    fprintf('Iteration: %d, RMSE: %f.\n', counter, RMSE);
+    
+    new_counter = counter + 1;
+end

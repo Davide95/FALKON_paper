@@ -1,4 +1,3 @@
-addpath(genpath('../../'));
 addpath(genpath('../../../'));
 
 %% Load Dataset ----------

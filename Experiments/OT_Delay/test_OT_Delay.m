@@ -1,4 +1,5 @@
 addpath(genpath('../../'));
+addpath(genpath('../../../'));
 
 %% Load Dataset ----------
 if or(~exist('X' , 'var'), ~exist('y' , 'var'))

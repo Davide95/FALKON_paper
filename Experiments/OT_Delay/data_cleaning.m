@@ -11,7 +11,6 @@ table = table(table.Month <= 4, :);
 
 %% Supervisory signal extraction ----------
 y = double(table2array(table(:, 'ArrDelay')));
-save('dataset/y.mat','y');
 
 %% Manual features selection ----------
 numericalCols = table2array(table(:, {'Distance', 'AirTime', ...
@@ -24,7 +23,17 @@ clear table;
 
 %% Training data extraction ----------
 X = double(horzcat(numericalCols, timeCols));
+
+%% Data shuffling
+[n, ~] = size(X);
+dataset_shuffling = randperm(n, n);
+X = X(dataset_shuffling, :);
+y = y(dataset_shuffling, :);
+clear dataset_shuffling n
+
+%% Data saving
 save('dataset/X.mat','X');
+save('dataset/y.mat','y');
 
 %% Clean unused variables ----------
 clear numericalCols timeCols;

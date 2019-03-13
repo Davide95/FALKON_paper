@@ -7,13 +7,6 @@ if or(~exist('X' , 'var'), ~exist('y' , 'var'))
     disp('Dataset loaded from secondary memory.')
 end
 
-[n, ~] = size(X);
-
-%% Data shuffling ----------
-dataset_shuffling = randperm(n, n);
-X = X(dataset_shuffling, :);
-y = y(dataset_shuffling, :);
-
 %% Data splitting ----------
 ts_size = 100000;
 Xvs = X(1:ts_size, :);

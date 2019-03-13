@@ -37,10 +37,10 @@ centersI = randperm(nTr, numberOfCenters);
 C = Xtr(centersI, :);
 
 %% Hyperparameters ----------
-sigma = 4;
+sigma = 2;
 kernel = gaussianKernel(sigma);
-lambda = 0.00067585821;
-iterations = 6;
+lambda = 1e-16;
+iterations = 10;
 
 %% Training ----------
 memToUse = [];

@@ -45,9 +45,9 @@ iterations = 6;
 %% Training ----------
 memToUse = [];
 useGPU = 1;
-counter = 1;
+cobj = {Xvs, Yvs, C, kernel};
 alpha = falkon(Xtr, C, kernel, Ytr, lambda, iterations, ...
-    counter, @hyperpars_tuning, ...
+    cobj, @hyperpars_tuning, ...
     memToUse, useGPU);
 
 %% Testing
@@ -58,12 +58,18 @@ RMSE = sqrt(mean((Yts - Ypred).^2));
 fprintf("RMSE test set: %f.", RMSE);
 
 %% Custom functions ----------
-function new_counter = hyperpars_tuning(alpha, counter)
+function new_cobj = hyperpars_tuning(alpha, cobj)
+    persistent counter
+    if isempty(counter)
+        counter = 0;
+    end
+    counter = counter + 1;
+
     numBlocks = 5;
-    tic; Ypred = KtsProd(Xvs, C, alpha, numBlocks, kernel); toc
+    tic; Ypred = KtsProd(cobj{1}, cobj{3}, alpha, numBlocks, cobj{4}); toc
     
-    RMSE = sqrt(mean((Yvs - Ypred).^2));
+    RMSE = sqrt(mean((cobj{2} - Ypred).^2));
     fprintf('Iteration: %d, RMSE: %f.\n', counter, RMSE);
     
-    new_counter = counter + 1;
+    new_cobj = cobj;
 end

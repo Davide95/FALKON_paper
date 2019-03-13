@@ -23,3 +23,6 @@ Execute the script [test_OT_Delay.m](ttest_OT_Delay.m) to run the training.
 # Hyperparameter optimization
 
 To see past attempts to do hyperparameter optimization and their result, check [hyperparameter-optimization.csv](hyperparameter-optimization.csv). 
+
+# Result
+For 10K centers the lowest value of RSME that we reached in the test set is 37.256214.

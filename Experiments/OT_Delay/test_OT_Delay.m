@@ -39,7 +39,7 @@ C = Xtr(centersI, :);
 %% Hyperparameters ----------
 sigma = 2;
 kernel = gaussianKernel(sigma);
-lambda = 0;
+lambda = 1e-16;
 iterations = 10;
 
 %% Training ----------

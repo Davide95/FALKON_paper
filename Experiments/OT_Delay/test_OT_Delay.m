@@ -1,11 +1,8 @@
 addpath(genpath('../../../'));
 
 %% Load Dataset ----------
-if or(~exist('X' , 'var'), ~exist('y' , 'var'))
-    load('dataset/X.mat');
-    load('dataset/y.mat');
-    disp('Dataset loaded from secondary memory.')
-end
+load('dataset/X.mat');
+load('dataset/y.mat');
 
 %% Data splitting ----------
 ts_size = 100000;

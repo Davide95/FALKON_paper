@@ -46,7 +46,6 @@ cobj = {Xvs, Yvs, C, kernel};
 alpha = falkon(Xtr, C, kernel, Ytr, lambda, iterations, ...
     cobj, @hyperpars_tuning, ...
     memToUse, useGPU);
-clear counter; % Reset of the persistent variable
 
 %% Testing
 numBlocks = 5;

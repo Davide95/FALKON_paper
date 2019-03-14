@@ -25,5 +25,4 @@ Execute the script [test_OT_Delay.m](ttest_OT_Delay.m) to run the training.
 To see past attempts to do hyperparameter optimization and their result, check [hyperparameter-optimization.csv](hyperparameter-optimization.csv). 
 
 # Result
-With 10K centers, after hyperparameters tuning, the RSME of the test set is equals to 37.256214.
-With 50K centers the RSME is 37.276333.
+With 10K centers, after hyperparameters tuning, the RSME of the test set is equals to 36.73.

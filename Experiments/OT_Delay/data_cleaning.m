@@ -16,7 +16,7 @@ y = double(table2array(table(:, 'ArrDelay')));
 numericalCols = table2array(table(:, {'Distance', 'AirTime', ...
     'DayOfWeek', 'DayofMonth', 'Month'}));
 timeCols = intHmmToMinutes(table2array(table(:, ...
-    {'DepTime', 'ArrTime'})));
+    {'CRSDepTime', 'CRSArrTime'})));
 
 %% Clean unused variables ----------
 clear table;

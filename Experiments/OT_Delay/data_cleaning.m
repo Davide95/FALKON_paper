@@ -18,7 +18,7 @@ timeCols = intHmmToMinutes(table2array(table(:, ...
     {'CRSDepTime', 'CRSArrTime'})));
 
 %% Training data extraction ----------
-X = double(horzcat(numericalCols, timeCols, aircraftAge));
+X = double(horzcat(numericalCols, timeCols));
 
 %% Data shuffling
 [n, ~] = size(X);

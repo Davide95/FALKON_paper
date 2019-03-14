@@ -4,7 +4,6 @@ table = readtable('dataset/2008.csv', ...
     'TreatAsEmpty', 'NA', ...
     'EmptyValue', 0, ...
     'Format', format);
-clear format;
 
 %% Filter data from January to April ----------
 table = table(table.Month <= 4, :);
@@ -18,9 +17,6 @@ numericalCols = table2array(table(:, {'Distance', 'AirTime', ...
 timeCols = intHmmToMinutes(table2array(table(:, ...
     {'CRSDepTime', 'CRSArrTime'})));
 
-%% Clean unused variables ----------
-clear table;
-
 %% Training data extraction ----------
 X = double(horzcat(numericalCols, timeCols));
 
@@ -29,14 +25,10 @@ X = double(horzcat(numericalCols, timeCols));
 dataset_shuffling = randperm(n, n);
 X = X(dataset_shuffling, :);
 y = y(dataset_shuffling, :);
-clear dataset_shuffling n
 
 %% Data saving
 save('dataset/X.mat','X');
 save('dataset/y.mat','y');
-
-%% Clean unused variables ----------
-clear numericalCols timeCols;
 
 %% Custom functions ----------
 function colsOut = intHmmToMinutes(colsIn)

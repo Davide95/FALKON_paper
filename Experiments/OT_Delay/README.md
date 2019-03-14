@@ -20,9 +20,5 @@ The result is saved onto `dataset/X.mat` and `dataset/y.mat` after its execution
 
 Execute the script [test_OT_Delay.m](test_OT_Delay.m) to run the training.
 
-# Hyperparameter optimization
-
-To see past attempts to do hyperparameter optimization and their result, check [hyperparameter-optimization.csv](hyperparameter-optimization.csv). 
-
 # Result
 With 10K centers, after hyperparameters tuning, the RSME of the test set is equals to 36.73.

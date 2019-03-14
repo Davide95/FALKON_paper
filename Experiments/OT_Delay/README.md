@@ -26,4 +26,4 @@ To see past attempts to do hyperparameter optimization and their result, check [
 
 # Result
 With 10K centers, after hyperparameters tuning, the RSME of the test set is equals to 37.256214.
-With 50K centers the RSME is 37.430842.
+With 50K centers the RSME is 37.276333.

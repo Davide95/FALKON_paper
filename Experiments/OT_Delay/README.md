@@ -6,7 +6,7 @@ The experiment is composed of different phases:
 
 Due to the fact that the size of the dataset is huge, it will not be uploaded in the repository.
 
-The datasets can be downloaded from [http://stat-computing.org/dataexpo/2009/2008.csv.bz2](http://stat-computing.org/dataexpo/2009/2008.csv.bz2) and [http://stat-computing.org/dataexpo/2009/plane-data.csv](http://stat-computing.org/dataexpo/2009/plane-data.csv).
+The dataset can be downloaded from [http://stat-computing.org/dataexpo/2009/2008.csv.bz2](http://stat-computing.org/dataexpo/2009/2008.csv.bz2).
 
 # Data cleaning
 

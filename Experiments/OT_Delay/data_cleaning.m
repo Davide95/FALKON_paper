@@ -1,9 +1,9 @@
 %% Load Dataset ----------
-format = '%d%d%d%d%d%d%d%d%C%d%s%d%d%d%d%d%C%C%d%d%d%d%C%d%d%d%d%d%d';
+formatData = '%d%d%d%d%d%d%d%d%C%d%s%d%d%d%d%d%C%C%d%d%d%d%C%d%d%d%d%d%d';
 table = readtable('dataset/2008.csv', ...
     'TreatAsEmpty', 'NA', ...
     'EmptyValue', 0, ...
-    'Format', format);
+    'Format', formatData);
 
 %% Filter data from January to April ----------
 table = table(table.Month <= 4, :);
@@ -18,7 +18,7 @@ timeCols = intHmmToMinutes(table2array(table(:, ...
     {'CRSDepTime', 'CRSArrTime'})));
 
 %% Training data extraction ----------
-X = double(horzcat(numericalCols, timeCols));
+X = double(horzcat(numericalCols, timeCols, aircraftAge));
 
 %% Data shuffling
 [n, ~] = size(X);

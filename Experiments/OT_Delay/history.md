@@ -7,12 +7,12 @@
 * Trovato un nuovo dataset con tutte le informazioni: https://www.dropbox.com/s/32lz1vnjx3bg9hd/airline.pickle.zip
 
 * Senza z-score: 
-	* RMSE > 37 validation set
-	* Sigma = 12
+	* RMSE > 36 validation set
+	* Sigma = 18
 	* Lambda = 10^-16
 	* 10.000 centers
 	* 5 iterations
-	Conclusione: usare z-score
+	Conclusione: usare z-score o non usarlo è uguale
 
 * Codice nelle pagine degli autori dei paper:
 	* https://github.com/SheffieldML/GPy

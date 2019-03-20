@@ -26,7 +26,7 @@ y = y(subIdx);
 [n, ~] = size(X);
 dataset_shuffling = randperm(n, n);
 X = X(dataset_shuffling, :);
-y = y(dataset_shuffling, :);
+y = y(dataset_shuffling);
 
 %% Data splitting ----------
 ts_size = 100000;

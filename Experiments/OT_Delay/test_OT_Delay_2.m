@@ -22,6 +22,12 @@ subIdx = month <= 4;
 X = X(subIdx, :);
 y = y(subIdx);
 
+%% Data shuffling
+[n, ~] = size(X);
+dataset_shuffling = randperm(n, n);
+X = X(dataset_shuffling, :);
+y = y(dataset_shuffling, :);
+
 %% Data splitting ----------
 ts_size = 100000;
 Xvs = X(1:ts_size, :);

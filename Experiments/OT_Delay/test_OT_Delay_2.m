@@ -24,7 +24,7 @@ y = y(subIdx);
 
 %% Data shuffling
 [n, ~] = size(X);
-dataset_shuffling = randperm(n, n);
+dataset_shuffling = fixedPerm(n);
 X = X(dataset_shuffling, :);
 y = y(dataset_shuffling);
 
@@ -88,4 +88,13 @@ function new_cobj = hyperpars_tuning(alpha, cobj)
     fprintf('Iteration: %d, RMSE: %f.\n', counter, RMSE);
     
     new_cobj = cobj;
+end
+
+function idx = fixedPerm(n)
+    persistent p;
+    if isempty(p)
+       p = randperm(n, n);
+    end
+    
+    idx = p;
 end

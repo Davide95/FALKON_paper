@@ -5,3 +5,4 @@
 !/Experiments/OT_Delay/hyperparameter-optimization.csv
 *.pickle
 Utilities/.ipynb_checkpoints/pickle_to_mat-checkpoint.ipynb
+Experiments/OT_Delay/dataset/airline.pickle.zip

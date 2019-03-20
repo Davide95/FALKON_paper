@@ -1,8 +1,3 @@
-
-## TODO
-* Provare kernel lineare;
-* Provare con meno punti;
-
 ## 3/20/2019
 * Trovato un nuovo dataset con tutte le informazioni: https://www.dropbox.com/s/32lz1vnjx3bg9hd/airline.pickle.zip
 
@@ -19,3 +14,5 @@
 	* http://bit.ly/2qwR5eW;
 	
 * Tick tock mi restituisce uno strano valore
+
+* Kernel lineare (Imprevedibile ad ogni iterazione)

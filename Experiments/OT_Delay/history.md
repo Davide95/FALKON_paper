@@ -10,8 +10,6 @@
 * Codice nelle pagine degli autori dei paper:
 	* https://github.com/SheffieldML/GPy
 	* http://bit.ly/2qwR5eW;
-	
-* Tick tock mi restituisce uno strano valore
 
 * Kernel lineare
 centers, sigma, iterations, RMSE-vs, MSE-ts
@@ -25,7 +23,7 @@ centers, sigma, iterations, RMSE-vs, MSE-ts
 * Trovato un nuovo dataset con tutte le informazioni: https://www.dropbox.com/s/32lz1vnjx3bg9hd/airline.pickle.zip
 Test con il nuovo kernel:
 centers, sigma, lambda, iterations, RMSE-vs, RMSE-ts
-10.000, 2, 1e-16, 6, 36.31, 36.28 (0.86 MSE, 0.89-0.81 papers) <- migliore
+10.000, 2, 1e-16, 6, 36.31, 36.28 (0.86 MSE, 0.89-0.81 papers) <- migliore, t5 = 0.0944
 -, 6, 1e-16, 5, 36.3, NA
 -, -, 1e-8, 4, 37.8, NA
 -, 1, 1e-16, 3, 39.8, NA
@@ -48,3 +46,8 @@ centers, sigma, lambda, iterations, RMSE-vs, RMSE-ts
 -, 6, -, -, 36.2
 500, 6, 1e-14, 37.01, 37.13 <- migliore
 100, -, 1e-10, 37, 37.4
+
+## 3/25/2019
+
+* Tick tock mi restituisce uno strano valore:
+	* t5 = 0.0944 invece di 3:51 min;

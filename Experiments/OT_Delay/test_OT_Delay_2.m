@@ -26,7 +26,10 @@ y = y(subIdx);
 
 %% Data shuffling
 [n, ~] = size(X);
-dataset_shuffling = fixedPerm(n);
+if ~exist('dataset_shuffling' , 'var')
+    dataset_shuffling = randperm(n, n);
+    disp("Random shuffling X...");
+end
 X = X(dataset_shuffling, :);
 y = y(dataset_shuffling);
 
@@ -51,7 +54,10 @@ Xts = recenter(Xts, XtrNotCentered);
 
 %% Nystrom centers ----------
 numberOfCenters = 10000;
-centersI = randperm(nTr, numberOfCenters);
+if ~exist('centersI' , 'var')
+    centersI = randperm(nTr, numberOfCenters);
+    disp("Random picking centers...");
+end
 C = Xtr(centersI, :);
 
 %% Hyperparameters ----------
@@ -90,13 +96,4 @@ function new_cobj = hyperpars_tuning(alpha, cobj)
     fprintf('Iteration: %d, RMSE: %f.\n', counter, RMSE);
     
     new_cobj = cobj;
-end
-
-function idx = fixedPerm(n)
-    persistent p;
-    if isempty(p)
-       p = randperm(n, n);
-    end
-    
-    idx = p;
 end

@@ -51,3 +51,24 @@ centers, sigma, lambda, iterations, RMSE-vs, RMSE-ts
 
 * Tick tock mi restituisce uno strano valore:
 	* t5 = 0.0944 invece di 3:51 min;
+	
+	
+## 4/4/2019
+* Sistemata normalizzatione. Nuovi valori:
+centers, sigma, lambda, iterations, RMSE-vs, RMSE-ts
+10.000,	2,	1e-16,	8 ,	39.49,	NA
+-,		-,	1e-8 ,	11,	36.19,	NA
+-,		-,	1e-4 ,	4 ,	36.09,	NA
+-,		-,	1e-2 ,	2 ,	38.27,	NA
+-,		4,	1e-4 ,	3 ,	36.63,	NA
+-,		-,	1e-8 ,	11, 35.89,	NA
+-,		6,	-    ,	- , 35.65,	NA
+-,		-,	-	 ,	12,	35.64,	36.55 <- migliore
+50.000,	-,	-	 ,	8,	35.64,	NA
+-,		-,	1e-6 ,	- , 36.17,	NA
+-,		8,	1e-8 ,	9 ,	35.82,	NA
+-,		-,	1e-10,	11,	35.92,	NA
+-,		-,	1e-6 ,	4 ,	36.38,	NA
+-,		7,	1e-8 ,	11,	35.74,	36.64
+-,		-,	1e-6 ,	9 ,	36.3 ,	NA
+-,		-,	1e-10,	11,	36.51,	NA

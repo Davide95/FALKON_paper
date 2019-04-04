@@ -44,7 +44,7 @@ Ytr = y(2*ts_size+1:end);
 [nTr, ~] = size(Xtr);
 
 %% Centering ----------
-renorm = @(W, Z) W*(diag(1./(std(Z))).^2);
+renorm = @(W, Z) W*(diag(1./(std(Z))));
 recenter = @(W, Z) (renorm(W - ones(size(W,1),1)*mean(Z),Z));
 
 XtrNotCentered = Xtr;

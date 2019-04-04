@@ -80,3 +80,20 @@ Ypred = KtsProd(Xts, C, alpha, numBlocks, kernel);
 
 RMSE = sqrt(mean((Yts - Ypred).^2));
 fprintf("RMSE test set: %f.\n", RMSE);
+
+%% Custom functions ----------
+function new_cobj = hyperpars_tuning(alpha, cobj)
+    persistent counter
+    if isempty(counter)
+        counter = 0;
+    end
+    counter = counter + 1;
+
+    numBlocks = 5;
+    tic; Ypred = KtsProd(cobj{1}, cobj{3}, alpha, numBlocks, cobj{4}); toc
+    
+    RMSE = sqrt(mean((cobj{2} - Ypred).^2));
+    fprintf('Iteration: %d, RMSE: %f.\n', counter, RMSE);
+    
+    new_cobj = cobj;
+end

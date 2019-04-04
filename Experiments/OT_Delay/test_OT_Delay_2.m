@@ -87,7 +87,6 @@ function new_cobj = hyperpars_tuning(alpha, cobj)
     if isempty(counter)
         counter = 0;
     end
-    counter = counter + 1;
 
     numBlocks = 5;
     tic; Ypred = KtsProd(cobj{1}, cobj{3}, alpha, numBlocks, cobj{4}); toc
@@ -96,4 +95,5 @@ function new_cobj = hyperpars_tuning(alpha, cobj)
     fprintf('Iteration: %d, RMSE: %f.\n', counter, RMSE);
     
     new_cobj = cobj;
+	counter = counter + 1;
 end

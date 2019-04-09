@@ -53,10 +53,12 @@ Xvs = recenter(Xvs, XtrNotCentered);
 Xts = recenter(Xts, XtrNotCentered);
 
 %% Find best sigma params ----------
-sigmas = fminunc(@(sigma) minProblem(Xvs, Yvs, ...
+disp("Finding best param...");
+sigmas = fminunc(@(sigma) minProblem(Xvs(1:ts_size/1000, :), Yvs(1:ts_size/1000), ...
     [sigma(1), sigma(2), sigma(3), ...
     sigma(4), sigma(5), sigma(6), sigma(7), sigma(8)]), ...
     [1 1 1 1 1 1 1 1]);
+disp("Sigmas: "); disp(sigmas);
 
 kernel = gaussianKernel_MWs(diag(exp(sigmas)));
 
@@ -94,4 +96,21 @@ function minFunc = minProblem(Xvs, Yvs, sigmas)
     w = transpose(Xvs) * c;
     Ypred = Xvs * w;
     minFunc = sum((Yvs - Ypred).^2);
+end
+
+%% Custom functions ----------
+function new_cobj = hyperpars_tuning(alpha, cobj)
+    persistent counter
+    if isempty(counter)
+        counter = 0;
+    end
+
+    numBlocks = 5;
+    tic; Ypred = KtsProd(cobj{1}, cobj{3}, alpha, numBlocks, cobj{4}); toc
+    
+    RMSE = sqrt(mean((cobj{2} - Ypred).^2));
+    fprintf('Iteration: %d, RMSE: %f.\n', counter, RMSE);
+    
+    new_cobj = cobj;
+	counter = counter + 1;
 end

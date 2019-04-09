@@ -72,3 +72,6 @@ centers, sigma, lambda, iterations, RMSE-vs, RMSE-ts
 -,		7,	1e-8 ,	11,	35.74,	36.64
 -,		-,	1e-6 ,	9 ,	36.3 ,	NA
 -,		-,	1e-10,	11,	36.51,	NA
+
+* 4/9/2019
+* Christian ha un processodi matlab che occupa il 76.8 GB di RAM fermo da almeno 6 gg

@@ -74,4 +74,13 @@ centers, sigma, lambda, iterations, RMSE-vs, RMSE-ts
 -,		-,	1e-10,	11,	36.51,	NA
 
 * 4/9/2019
-* Christian ha un processodi matlab che occupa il 76.8 GB di RAM fermo da almeno 6 gg
+* Christian ha un processodi matlab che occupa il 76.8 GB di RAM fermo da almeno 6 gg;
+
+* Usato fminunc
+Sigma params: -0.9912 -1.9376 -1.5306 1.4155 -0.8431 0.1389 -0.3509 0.3040 (1000 points, 10.000 centers)
+lambda, iterations, RMSE
+1e-16, 20, 37.03
+1e-8, 20, 35.17
+1e-7, 20, 34.99
+1e-6, 20, 35.14
+1e-4, 4, 36.08

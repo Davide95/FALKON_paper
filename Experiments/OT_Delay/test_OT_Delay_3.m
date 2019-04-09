@@ -1,4 +1,4 @@
-
+addpath(genpath('../../../'));
 
 %% Load Dataset ----------
 % Download the dataset from https://www.dropbox.com/s/32lz1vnjx3bg9hd/airline.pickle.zip
@@ -35,8 +35,8 @@ y = y(dataset_shuffling);
 
 %% Data splitting ----------
 ts_size = 100000;
-Xvs = X(1:ts_size/100, :);
-Yvs = y(1:ts_size/100);
+Xvs = X(1:ts_size, :);
+Yvs = y(1:ts_size);
 Xts = X(ts_size+1:2*ts_size, :);
 Yts = y(ts_size+1:2*ts_size);
 Xtr = X(2*ts_size+1:end, :);
@@ -57,6 +57,35 @@ sigmas = fminunc(@(sigma) minProblem(Xvs, Yvs, ...
     [sigma(1), sigma(2), sigma(3), ...
     sigma(4), sigma(5), sigma(6), sigma(7), sigma(8)]), ...
     [1 1 1 1 1 1 1 1]);
+
+kernel = gaussianKernel_MWs(diag(exp(sigmas)));
+
+%% Nystrom centers ----------
+numberOfCenters = 10000;
+if ~exist('centersI' , 'var')
+    centersI = randperm(nTr, numberOfCenters);
+    disp("Random picking centers...");
+end
+C = Xtr(centersI, :);
+
+%% Hyperparameters ----------
+lambda = 1e-16;
+iterations = 10;
+
+%% Training ----------
+memToUse = [];
+useGPU = 1;
+cobj = {Xvs, Yvs, C, kernel};
+alpha = falkon(Xtr, C, kernel, Ytr, lambda, iterations, ...
+    cobj, @hyperpars_tuning, ...
+    memToUse, useGPU);
+
+%% Testing
+numBlocks = 5;
+Ypred = KtsProd(Xts, C, alpha, numBlocks, kernel);
+
+RMSE = sqrt(mean((Yts - Ypred).^2));
+fprintf("RMSE test set: %f.\n", RMSE);
 
 %% Function to be minimized to estimate sigma parameters ----------
 function minFunc = minProblem(Xvs, Yvs, sigmas)

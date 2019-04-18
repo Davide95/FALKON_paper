@@ -72,13 +72,6 @@ alpha = falkon(Xtr, C, kernel, Ytr, lambda, iterations, ...
     cobj, @hyperpars_tuning, ...
     memToUse, useGPU);
 
-%% Testing
-numBlocks = 5;
-Ypred = KtsProd(Xts, C, alpha, numBlocks, kernel) > 0.5;
-
-err = sum(abs(Yts - Ypred));
-fprintf("Perc err: %f.\n", err*100/double(size(Yts, 1)));
-
 %% Custom functions ----------
 function new_cobj = hyperpars_tuning(alpha, cobj)
     persistent counter

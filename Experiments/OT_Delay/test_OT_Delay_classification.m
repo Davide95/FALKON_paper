@@ -74,10 +74,10 @@ alpha = falkon(Xtr, C, kernel, Ytr, lambda, iterations, ...
 
 %% Testing
 numBlocks = 5;
-Ypred = KtsProd(Xts, C, alpha, numBlocks, kernel);
+Ypred = KtsProd(Xts, C, alpha, numBlocks, kernel) > 0.5;
 
 err = sum(abs(Yts - Ypred));
-fprintf("Perc err: %f.\n", err*100/size(y));
+fprintf("Perc err: %f.\n", err*100/double(size(y, 1)));
 
 %% Custom functions ----------
 function new_cobj = hyperpars_tuning(alpha, cobj)
@@ -87,10 +87,12 @@ function new_cobj = hyperpars_tuning(alpha, cobj)
     end
 
     numBlocks = 5;
-    tic; Ypred = KtsProd(cobj{1}, cobj{3}, alpha, numBlocks, cobj{4}); toc
+    tic; Ypred = KtsProd(cobj{1}, cobj{3}, alpha, numBlocks, cobj{4}) > 0.5; toc
     
     RMSE = sqrt(mean((cobj{2} - Ypred).^2));
-    fprintf('Iteration: %d, RMSE: %f.\n', counter, RMSE);
+    fprintf('Iteration: %d.\n', counter);
+	err = sum(abs(cobj{2} - Ypred));
+	fprintf("Perc err: %f.\n", err*100/double(size(Ypred, 1)));
     
     new_cobj = cobj;
 	counter = counter + 1;

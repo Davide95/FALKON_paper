@@ -84,3 +84,13 @@ lambda, iterations, RMSE
 1e-7, 20, 34.99
 1e-6, 20, 35.14
 1e-4, 4, 36.08
+
+
+TODO
+* Controllare da dove viene quel 5.9 milioni
+* Riprodurre 37% di errore su un ts di 100.000 (niente vs)
+* Provare a cercare DSs with FC NN
+
+* 4/17/2019
+	* GPL scopo di lucro: NOPE
+	* Quel 5.9 ? tutto il dataset

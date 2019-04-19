@@ -87,10 +87,14 @@ lambda, iterations, RMSE
 
 
 TODO
-* Controllare da dove viene quel 5.9 milioni
 * Riprodurre 37% di errore su un ts di 100.000 (niente vs)
 * Provare a cercare DSs with FC NN
 
 * 4/17/2019
 	* GPL scopo di lucro: NOPE
 	* Quel 5.9 ? tutto il dataset
+	
+* 4/19/2019
+centers, sigma, lambda, iterations, RMSE-ts
+10000,	2,	1e-16,	49, 46.07
+-,		2,	1e-8,	50, 33.18
